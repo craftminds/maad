@@ -3,6 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/tcp_client.dart';
+import '../providers/logs.dart';
+import '../models/log.dart';
 
 class MainView extends StatefulWidget {
   @override
@@ -12,7 +14,6 @@ class MainView extends StatefulWidget {
 class _MainViewState extends State<MainView> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     ipAddressController.addListener(() {
       setState(() {
@@ -46,6 +47,9 @@ class _MainViewState extends State<MainView> {
     String errorText = Provider.of<TcpClient>(context).error;
     ClientStatus _clientConnected =
         Provider.of<TcpClient>(context, listen: false).clientConnectionStatus;
+
+    final logs = Provider.of<Logs>(context);
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -145,6 +149,10 @@ class _MainViewState extends State<MainView> {
                                             Provider.of<TcpClient>(context,
                                                     listen: false)
                                                 .connectToServer();
+                                            logs.addLog(
+                                              'Port opened ${portController.text}@${ipAddressController.text}',
+                                              InfoStatus.info,
+                                            );
                                           }
                                         : null,
                                     child: const Text('Connect'),
@@ -249,17 +257,59 @@ class _MainViewState extends State<MainView> {
               ),
               SizedBox(height: 5),
               Expanded(
+                  flex: 1,
                   child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 1,
-                    color: Colors.black,
-                  ),
-                ),
-                child: Row(
-                  children: [],
-                ),
-              ))
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 1,
+                        color: Colors.black,
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: DataTable(
+                            headingRowHeight: 0,
+                            dividerThickness: 1,
+                            columns: [
+                              DataColumn(label: Text('Timestamp')),
+                              DataColumn(label: Text('Info')),
+                            ],
+                            rows: [
+                              DataRow(
+                                cells: <DataCell>[
+                                  DataCell(Text('timestamp')),
+                                  DataCell(Text(
+                                      'longer info to view and information about addresss 192.168.2.2.')),
+                                ],
+                              ),
+                              DataRow(
+                                cells: <DataCell>[
+                                  DataCell(Text('timestamp')),
+                                  DataCell(Text('info')),
+                                ],
+                              ),
+                              DataRow(
+                                cells: <DataCell>[
+                                  DataCell(Text('timestamp')),
+                                  DataCell(
+                                    Text(
+                                      'anther info about the application state or the conection state that probably won;t fit to single line',
+                                      softWrap: true,
+                                    ),
+                                    // ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ))
             ],
           ),
         ),

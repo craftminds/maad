@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 
 import './widgets/main_view.dart';
 import './providers/tcp_client.dart';
+import './providers/logs.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => TcpClient()),
+        ChangeNotifierProvider(create: (context) => Logs()),
       ],
       child: MaterialApp(
         title: 'Flutter Spotify UI',
