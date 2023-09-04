@@ -278,33 +278,36 @@ class _MainViewState extends State<MainView> {
                               DataColumn(label: Text('Timestamp')),
                               DataColumn(label: Text('Info')),
                             ],
-                            rows: [
-                              DataRow(
-                                cells: <DataCell>[
-                                  DataCell(Text('timestamp')),
-                                  DataCell(Text(
-                                      'longer info to view and information about addresss 192.168.2.2.')),
-                                ],
-                              ),
-                              DataRow(
-                                cells: <DataCell>[
-                                  DataCell(Text('timestamp')),
-                                  DataCell(Text('info')),
-                                ],
-                              ),
-                              DataRow(
-                                cells: <DataCell>[
-                                  DataCell(Text('timestamp')),
-                                  DataCell(
-                                    Text(
-                                      'anther info about the application state or the conection state that probably won;t fit to single line',
-                                      softWrap: true,
-                                    ),
-                                    // ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                            rows: 
+                            // fetch the data from the logs class as a map????
+                            
+                            // [
+                            //   DataRow(
+                            //     cells: <DataCell>[
+                            //       DataCell(Text('timestamp')),
+                            //       DataCell(Text(
+                            //           'longer info to view and information about addresss 192.168.2.2.')),
+                            //     ],
+                            //   ),
+                            //   DataRow(
+                            //     cells: <DataCell>[
+                            //       DataCell(Text('timestamp')),
+                            //       DataCell(Text('info')),
+                            //     ],
+                            //   ),
+                            //   DataRow(
+                            //     cells: <DataCell>[
+                            //       DataCell(Text('timestamp')),
+                            //       DataCell(
+                            //         Text(
+                            //           'anther info about the application state or the conection state that probably won;t fit to single line',
+                            //           softWrap: true,
+                            //         ),
+                            //         // ),
+                            //       ),
+                            //     ],
+                            //   ),
+                            // ],
                           ),
                         ),
                       ],

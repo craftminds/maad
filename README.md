@@ -1,16 +1,14 @@
 # maad
 
-A new Flutter project.
+Maad is Modbus as a database project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+The main idea of the application is to:
+- read Modbus device
+- save data in form of database table
 
-A few resources to get you started if this is your first Flutter project:
+The registers can be grouped and stored in tables for ease of later use. This is the introduction to test the onyl library for Modbus that exist in the flutter environment and try to contribute to develop it futher (ie. continue the serial connection)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- [ ] create prototype of the application using basic flutter library
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

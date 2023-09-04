@@ -11,4 +11,8 @@ class Log {
   });
 }
 
-enum InfoStatus { warning, error, info }
+enum InfoStatus {
+  warning,
+  error,
+  info,
+}
